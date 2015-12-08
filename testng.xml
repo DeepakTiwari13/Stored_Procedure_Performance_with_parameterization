@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- This file is responsible for running the entire test suite or tests 
+	mentioned in this xml file. Listener has also been added in this file to 
+	report the error from try/catch block -->
+
+<suite name="Kinnser SP_Performance Test Suite" verbose="1">
+
+	<listeners>
+		<listener class-name="Framework_Error_Listener" />
+	</listeners>
+
+	<test name="Basic system test">
+		<classes>
+			<class name="Procedure_Performance_Test.SSP_Demo_System_Test" />
+		</classes>
+	</test>
+
+	<test name="SSP_Test_1">
+		<classes>
+			<class name="Procedure_Performance_Test.Stored_Procedure_1" />
+		</classes>
+	</test>
+
+
+	<test name="SSP_Test_1">
+		<classes>
+			<class name="Procedure_Performance_Test.Stored_Procedure_2" />
+		</classes>
+	</test>
+
+</suite>
