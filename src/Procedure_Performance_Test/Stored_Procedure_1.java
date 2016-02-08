@@ -156,8 +156,7 @@ public class Stored_Procedure_1 extends Connection_Parameter {
 		 */
 		Filewrite Forwardheaderdata = new Filewrite();
 		Forwardheaderdata.Write_US80737_Params_tofile(
-				datatable.getCellData("Datatable", "Stored procedure",
-						3).trim(), CompanyIDInt, RemoteOfficeIdInt,
+				datatable.getCellData("Stored_Procedure_1", CompanyIDInt, RemoteOfficeIdInt,
 				InvoiceIds, ClientpayerInt, GrossCharge, AmountToPay,
 				TotalPayment, TotalFixed);
 
@@ -166,15 +165,13 @@ public class Stored_Procedure_1 extends Connection_Parameter {
 		 * of this stored procedure
 		 */
 		Getprocedurestat gps = new Getprocedurestat();
-		gps.get_ssp_Statistics(datatable.getCellData("Datatable",
-				"Stored procedure",3));
+		gps.get_ssp_Statistics("Stored_Procedure_1");
 
 		/*
 		 * Object of "Filewrite" class is created to write the output of stored
 		 * procedure in log file
 		 */
-		Forwardheaderdata.Write_SP_US80737_output_paramater_to_file(datatable
-				.getCellData("Datatable", "Stored procedure", 3),
+		Forwardheaderdata.Write_SP_US80737_output_paramater_to_file("Stored_Procedure_1",
 				GrossCharge, AmountToPay, TotalPayment, TotalFixed);
 	}
 
