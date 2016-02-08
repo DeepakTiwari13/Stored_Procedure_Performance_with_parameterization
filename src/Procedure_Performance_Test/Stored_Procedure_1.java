@@ -102,11 +102,6 @@ public class Stored_Procedure_1 extends Connection_Parameter {
 
 		String GrossCharge = null, AmountToPay = null, TotalPayment = null, TotalFixed = null;
 
-		if (datatable.getCellData("Datatable", "Run mode", 3).equals(
-				"N"))
-			throw new SkipException(
-					"Skipping test because of flag is set to N [Test is set to be skipped]");
-
 		App_log.info("Calling stored procedure [Stored_Procedure_1]");
 
 		int CompanyIDInt = Integer.parseInt(CompanyID);
