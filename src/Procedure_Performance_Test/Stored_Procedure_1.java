@@ -62,17 +62,18 @@ public class Stored_Procedure_1 extends Connection_Parameter {
 				.getProperty("usernamedata");
 		String password = Propertyfilereader.loadfile.getProperty("password");
 		
-		if (datatable.getCellData("Datatable", "Stored procedure",3)
-				.trim().equals("Stored_Procedure_1")) {
-			String databasetoconnect = datatable.getCellData(
-					"Datatable", "Database name", 3);
+	        SearchTestCase stc = new SearchTestCase();
+		if (stc.Checktestcasewithrunmode("Stored_Procedure_1", datatable)) {
+
+			String databasetoconnect = stc.dbtoconnect;
 
 			Connection_Parameter cp = new Connection_Parameter();
 			cp.Createconnectionwithdatabase(servername, databasetoconnect,
 					username, password);
 		} else {
 			throw new SkipException(
-					"Skipping test because wrong stored procedure is defined [Test is set to be skipped]");
+					"Skipping test case.Please check RuntimeVariable.xlsx under package Datatable ");
+
 		}
 	
 	}
