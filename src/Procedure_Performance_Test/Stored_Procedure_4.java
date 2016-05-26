@@ -34,13 +34,12 @@ import Connection_DB.Connection_Parameter;
 import Filereader.Propertyfilereader;
 import Filereader.Xls_Reader;
 
-public class SSP_Devx_ARClientInvoiceRemittanceReport extends
-		Connection_Parameter {
+public class Stored_Procedure_4 extends Connection_Parameter {
 
 	SoftAssert Reportfailure = new SoftAssert();
 	// Object of soft assert has been created
 	static Xls_Reader datatable = null;
-	Logger App_log = Logger.getLogger("ssp_Devx_ARClientInvoiceRemittanceReport");
+	Logger App_log = Logger.getLogger("Stored_Procedure_4");
 	// Object of log4j api has been created
 	static HSSFRow row;
 	static HSSFCell cell;
@@ -71,7 +70,7 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 		String password = Propertyfilereader.loadfile.getProperty("password");
 		
 		SearchTestCase stc = new SearchTestCase();
-		if (stc.Checktestcasewithrunmode("ssp_Devx_ARClientInvoiceRemittanceReport", datatable)) {
+		if (stc.Checktestcasewithrunmode("Stored_Procedure_4", datatable)) {
 
 			String databasetoconnect = stc.dbtoconnect;
 
@@ -86,10 +85,10 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 
 	}
 
-	/* Test ssp_Devx_ARClientInvoiceRemittanceReport_Execution uses runmode from RuntimeVariable.xlsx file
-	 * Test ssp_Devx_ARClientInvoiceRemittanceReport_Execution uses data provider "getdata_US92875" to load the data from xls file
-	 * Test ssp_Devx_ARClientInvoiceRemittanceReport_Execution runs ssp_Devx_ARClientInvoiceRemittanceReport stored procedure
-	 * Test ssp_Devx_ARClientInvoiceRemittanceReport_Execution accept following parameters
+	/* Test Stored_Procedure_4_Execution uses runmode from RuntimeVariable.xlsx file
+	 * Test Stored_Procedure_4_Execution uses data provider "getdata_US92875" to load the data from xls file
+	 * Test Stored_Procedure_4_Execution runs Stored_Procedure_4 stored procedure
+	 * Test Stored_Procedure_4_Execution accept following parameters
 	 * Param1 CompanyId,Param2 RemoteOfficeId,Param3 FromDate,Param4 ToDate,Param5 FromInvoiceId,Param6 ToInvoiceId 
 	 * Param7 PayerId,Param8 BillingPeriodId,Param9 ClientIdList
 	 * 
@@ -97,13 +96,13 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 	 * 
 	 */
 	@Test(dataProvider = "getdata_US92875",invocationCount = 1, threadPoolSize = 1, timeOut = 600000, priority = 1, enabled = true)
-	public void ssp_Devx_ARClientInvoiceRemittanceReport_Execution(String CompanyId,String RemoteOfficeId,String FromDate,String ToDate,
+	public void Stored_Procedure_4_Execution(String CompanyId,String RemoteOfficeId,String FromDate,String ToDate,
 			String FromInvoiceId,String ToInvoiceId,String PayerId,String BillingPeriodId,String ClientIdList)
 			
 
 	throws SQLException, ParseException, IOException, InterruptedException, SAXException, ParserConfigurationException {
 
-		App_log.info("Calling stored procedure [ssp_Devx_ARClientInvoiceRemittanceReport]");
+		App_log.info("Calling stored procedure [Stored_Procedure_4]");
 
 		int CompanyIdInt = Integer.parseInt(CompanyId);
 		int RemoteOfficeIdInt = Integer.parseInt(RemoteOfficeId);
@@ -111,7 +110,7 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 		int ToInvoiceIdInt = Integer.parseInt(ToInvoiceId);
 		int BillingPeriodIdInt = Integer.parseInt(BillingPeriodId);
 					
-		String US92875 = "{ ?=call ssp_Devx_ARClientInvoiceRemittanceReport (?,?,?,?,?,?,?,?,?)}";
+		String US92875 = "{ ?=call Stored_Procedure_4 (?,?,?,?,?,?,?,?,?)}";
 	
 		Dateconverter dc = new Dateconverter();
 		cs = conn.prepareCall(US92875);
@@ -128,12 +127,12 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 		cs.setInt(9, BillingPeriodIdInt);
 		cs.setString(10, ClientIdList);
 		
-		String preparedSP = "ssp_Devx_ARClientInvoiceRemittanceReport "+" "+CompanyIdInt+" "+RemoteOfficeIdInt+" "+FromDate+" "+ToDate+" "+FromInvoiceIdInt+" "+
+		String preparedSP = "Stored_Procedure_4 "+" "+CompanyIdInt+" "+RemoteOfficeIdInt+" "+FromDate+" "+ToDate+" "+FromInvoiceIdInt+" "+
 				ToInvoiceIdInt+" "+PayerId+" "+BillingPeriodIdInt+" "+ClientIdList;
 		App_log.info("Printing prepared SP "+preparedSP);
 				
 		try {
-			App_log.info("Executing stored procedure [ssp_Devx_ARClientInvoiceRemittanceReport]");
+			App_log.info("Executing stored procedure [Stored_Procedure_4]");
 			ResultSetBoolean = cs.execute();
 			
 			App_log.info("******"+" Testing with boolean result set "+"*******"+ResultSetBoolean+"******");
@@ -191,13 +190,13 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 		
 		/* Object of "Filewrite" class is created to write the supplied dataset in log file*/
 		Filewrite Forwardheaderdata = new Filewrite();
-		Forwardheaderdata.Write_US92875_Params_tofile("ssp_Devx_ARClientInvoiceRemittanceReport",CompanyIdInt,RemoteOfficeIdInt,dc.Getdate(FromDate),
+		Forwardheaderdata.Write_US92875_Params_tofile("Stored_Procedure_4",CompanyIdInt,RemoteOfficeIdInt,dc.Getdate(FromDate),
 				dc.Getdate(ToDate),FromInvoiceIdInt,ToInvoiceIdInt,PayerId,BillingPeriodIdInt,ClientIdList);
 
 		/* Object of "Getprocedurestat" class is created to write the statistics of this stored procedure*/
 		Getprocedurestat gps = new Getprocedurestat();
 		Getprocedurestat.SPReturnParam=SendSPReturnValue();
-		gps.get_ssp_Statistics("ssp_Devx_ARClientInvoiceRemittanceReport");
+		gps.get_ssp_Statistics("Stored_Procedure_4");
 		Reportfailure.assertAll();
 		
 	}
@@ -207,15 +206,15 @@ public class SSP_Devx_ARClientInvoiceRemittanceReport extends
 	}
 	
 
-	/* Function "getdata_US92875" is a dataprovider for test ssp_Devx_ARClientInvoiceRemittanceReport_Execution
-	 * Function "getdata_US92875" loads the data for test from ssp_Devx_ARClientInvoiceRemittanceReport_dataprovider.xls file
+	/* Function "getdata_US92875" is a dataprovider for test Stored_Procedure_4_Execution
+	 * Function "getdata_US92875" loads the data for test from Stored_Procedure_4_dataprovider.xls file
 	 */
 	
 	@DataProvider
 	public Object[][] getdata_US92875() throws IOException {
 		App_log.info("Inside data provider");
 		App_log.info("In side xls reader utility");
-		FileInputStream file = new FileInputStream(new File(System.getProperty("user.dir")+"\\src\\Data_Providers\\ssp_Devx_ARClientInvoiceRemittanceReport_dataprovider.xls"));
+		FileInputStream file = new FileInputStream(new File(System.getProperty("user.dir")+"\\src\\Data_Providers\\Stored_Procedure_4_dataprovider.xls"));
 		App_log.info("Test data provider file is located");
 		HSSFWorkbook workbook = new HSSFWorkbook(file);
 		HSSFSheet sheet = workbook.getSheetAt(0);
