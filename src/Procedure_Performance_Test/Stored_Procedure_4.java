@@ -163,7 +163,7 @@ public class Stored_Procedure_4 extends Connection_Parameter {
 			}
 
 		} catch (Throwable t) {
-			App_log.info(" Error in SP is [ssp_Devx_ARClientInvoiceRemittanceReport] "
+			App_log.info(" Error in SP is [Stored_Procedure_4] "
 					+ t.fillInStackTrace());
 
 			ErrorUtil.addVerificationFailure(t);
